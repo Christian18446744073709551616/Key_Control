@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #f4f4f9;
+  }
+  h1 {
+    text-align: center;
+  }
+  form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  position: sticky;
+  top: 0; /* distância do topo */
+  background: #f4f4f9; /* mesma cor do body ou outra */
+  z-index: 1000;
+  padding: 10px 0;
+}
+#seletorNomes {
+  width: 150px;
+  padding: 10px;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  transition: 0.3s;
+  cursor: pointer;
+  position: sticky;
+  top: 0; /* fixa junto do form */
+  z-index: 1001; /* acima do form se necessário */
+}
+
+#seletorNomes:hover {
+  border-color: #45a049;
+  background-color: #ffffff;
+}
+
+#seletorNomes:focus {
+  border-color: #2196F3;
+  box-shadow: 0 0 6px rgba(33, 150, 243, 0.5);
+}
+
+#seletorNomes option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+}
+
+  input, button {
+    padding: 8px;
+    font-size: 14px;
+  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 80px; /* altura aproximada do form + seletor */
+}
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+  .btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+  }
+  .retirar { background: #4caf50; color: white; }
+  .devolver { background: #f44336; color: white; }
+  

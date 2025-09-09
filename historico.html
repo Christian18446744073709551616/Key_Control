@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Histórico de Chaves</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📜 Histórico de Chaves</h1>
+<p> voltar ao controle de chaves!:</p>
+
+<li><a href="/controle.html">controle de chaves </a></li>
+<br>
+
+
+ <!-- Filtro por dia -->
+  <section class="filtro">
+    <h2>Pesquisar por Dia</h2>
+    <input type="date" id="filtroDia">
+    <button id="buscarDia">Buscar</button>
+    <table id="tabelaDia">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Pessoa</th>
+          <th>Chave</th>
+          <th>Retirada</th>
+          <th>Devolução</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- Filtro por pessoa -->
+  <section class="filtro">
+    <h2>Pesquisar por Pessoa</h2>
+    <select id="filtroPessoa">
+      <option value="">-- Selecione uma pessoa --</option>
+    </select>
+    <button id="buscarPessoa">Buscar</button>
+    <table id="tabelaPessoa">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Pessoa</th>
+          <th>Chave</th>
+          <th>Retirada</th>
+          <th>Devolução</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- Estatísticas -->
+  <section class="estatisticas">
+    <h2>📊 Estatísticas</h2>
+    <div id="chaveMaisUsada">Chave mais usada: -</div>
+    <div id="diaMaisMovimentado">Dia com mais movimentações: -</div>
+    <div id="usoPorChave">Chave mais usada em um único dia: -</div>
+  </section>
+
+   <script type="module" src="diagnostico.js"></script>
+
+</body>
+</html>
