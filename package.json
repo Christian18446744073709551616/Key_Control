@@ -1,6 +1,46 @@
 {
+
+  
+
+  "name": "controle_chave",
+
+  
+
+  "version": "1.0.0",
+
+  
+
+  "scripts": {
+
+  
+
+    
+
+
+
+  
+
+  },
+
+  
+
   "dependencies": {
-    "@supabase/supabase-js": "^2.57.0",
-    "dotenv": "^17.2.2"
+
+  
+
+    
+
+  "@supabase/supabase-js": "^2.57.4",
+
+  
+
+    
+
+  "dotenv": "^17.2.2"
+
+  
+
   }
+
 }
+

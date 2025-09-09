@@ -3,9 +3,14 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 
 
+// const supabase = createClient(
+//  'https://dmaqzgkqevphgitmvvlg.supabase.co',
+// 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRtYXF6Z2txZXZwaGdpdG12dmxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDE5ODIsImV4cCI6MjA3MjQxNzk4Mn0.xVX4iPIVjn-uB2efG8XJy_0pPBR9TXPclkkwIlEPm5A'
+// );
+
 const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
+ process.env.SUPABASE_URL,
+ process.env.SUPABASE_KEY
 );
 
 // Buscar todas as chaves
