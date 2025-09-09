@@ -9,8 +9,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
 // );
 
 const supabase = createClient(
- process.env.SUPABASE_URL,
- process.env.SUPABASE_KEY
+ SUPABASE_URL,
+ SUPABASE_KEY
 );
 
 // Buscar todas as chaves
