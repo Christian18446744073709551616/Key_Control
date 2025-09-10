@@ -18,6 +18,10 @@ function getHojeSP() {
   return formatter.format(agora); // exemplo: 2025-09-08
 }
 
+
+
+
+
 // Renderizar tabela apenas com registros de hoje
 async function render() {
   const hojeSP = getHojeSP();

@@ -227,6 +227,8 @@ btnPessoa.addEventListener("click", async () => {
     }
   });
 
+
+
   const entries = Object.entries(contagemChaves);
   const sorted = entries.sort((a, b) => b[1] - a[1]);
   const [chaveMaisUsada, qtd] = sorted[0];
