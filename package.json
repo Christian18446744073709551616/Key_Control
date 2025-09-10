@@ -2,18 +2,13 @@
   "name": "controle_chave",
   "version": "1.0.0",
   "scripts": {
-    "start": "node server.js"},
+    "start": "node server.js"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
     "dotenv": "^17.2.2",
     "express": "^5.1.0"
-    
-   },
-
-
+  },
   "license": "MIT",
-   "type": "module"
+  "type": "module"
 }
- 
-
-  
