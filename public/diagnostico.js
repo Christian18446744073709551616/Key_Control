@@ -1,10 +1,17 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-// ---------- CONFIGURE AQUI (ou importe do seu database.js) ----------
-const supabase = createClient(
-  'https://dmaqzgkqevphgitmvvlg.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRtYXF6Z2txZXZwaGdpdG12dmxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4NDE5ODIsImV4cCI6MjA3MjQxNzk4Mn0.xVX4iPIVjn-uB2efG8XJy_0pPBR9TXPclkkwIlEPm5A'
-);
+import { initSupabase } from "./database.js";
+
+
+async function main() {
+  await initSupabase();   // 🔹 garante que o Supabase foi inicializa
+  const supabase = await initSupabase(); // 🔹 aqui você já recebe o client
+  // agora usa `supabase` normalmente
+  const { data, error } = await supabase.from("Controle_chave").select("*");
+  console.log(data, error);
+
+
+
+
 
 // ---------- Helpers ----------
 function ymdLocal(date) {
@@ -66,6 +73,7 @@ function preencherTabela(tabela, dados) {
 // ---------- Estatísticas de janela (últimos N dias) ----------
 async function calcularEstatisticasJanela(daysWindow = 30) {
   // Janela local: do início do dia (daysWindow-1) até hoje (local)
+
   const hoje = new Date();
   const endLocal = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate(), 23, 59, 59, 999);
   const startLocal = new Date(endLocal);
@@ -252,3 +260,9 @@ btnPessoa.addEventListener("click", async () => {
     </tr>
   `;
 });
+
+
+
+}
+
+main();

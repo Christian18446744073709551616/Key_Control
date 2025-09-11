@@ -20,13 +20,14 @@
 </select>
 
   <form id="formChave">
-    <input type="text" id="pegou" placeholder="Nome de quem pegou" >
+    <input type="text" oninput="this.value = this.value.toUpperCase()"  id="pegou" placeholder="Nome de quem pegou" >
     <select name="typekey" id="typekey">
         <option value="">chave?</option>
         <option value="igreja">igreja</option>
         <option value="lateral">lateral</option>
          <option value="gaiola">gaiola</option>
-          <option value="lateral">troca</option>
+          <option value="troca">troca</option>
+           <option value="igreja-lateral">igreja-lateral</option>
 
       </select>
     <button type="submit" class="btn retirar">Pegar chave</button>

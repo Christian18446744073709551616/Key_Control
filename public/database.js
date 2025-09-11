@@ -34,10 +34,33 @@ export async function getChaves() {
 export async function addChave(nome, typekey) {
   const client = getSupabase();
   if (!typekey || typekey.trim() === "") return;
+
+  // Verifica se a chave já está retirada e não devolvida
+  const { data: existente, error: checkError } = await client
+    .from("Controle_chave")
+    .select("*")
+    .eq("chave", typekey)
+    .eq("devolvido", false)
+    .limit(1)
+    .single();
+
+  if (checkError && checkError.code !== "PGRST116") { // ignora "no rows found" do Supabase
+    console.error("Erro ao verificar chave:", checkError);
+    return;
+  }
+
+  if (existente) {
+    console.warn(`A chave "${typekey}" ainda não foi devolvida!`);
+    alert(`A chave "${typekey}" ainda não foi devolvida!`);
+    return;
+  }
+
+  // Insere a nova retirada
   const { error } = await client
     .from("Controle_chave")
     .insert([{ pegou: nome, chave: typekey, devolvido: false }]);
-  if (error) console.error(error);
+
+  if (error) console.error("Erro ao adicionar chave:", error);
 }
 
 export async function devolverChave(id) {

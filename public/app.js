@@ -68,17 +68,19 @@ async function render() {
     tabela.lastElementChild.scrollIntoView({ behavior: "smooth" });
   }
 }
-
+const nomesPreProgramados = ["CAIO", "SAMUEL", "KAIQUE", "DANIELLE", "CHRISTIAN"];
 // Carregar nomes do localStorage
 function carregarNomes() {
-  const nomes = JSON.parse(localStorage.getItem("nomes")) || [];
+  const nomes = JSON.parse(localStorage.getItem("nomes"))  || [];
   seletor.innerHTML = `<option value="">-- Escolha um nome --</option>`;
   nomes.forEach(nome => {
     const opt = document.createElement("option");
-    opt.value = nome;
-    opt.textContent = nome;
+    opt.value = nome.toUpperCase();
+    opt.textContent = nome.toUpperCase();
     seletor.appendChild(opt);
+    
   });
+
   seletor.addEventListener("change", () => {
     if (seletor.value !== "") {
       inputNome.value = seletor.value;
@@ -103,7 +105,7 @@ form.addEventListener("submit", async e => {
   }
 
   // Adicionar chave no banco
-  await addChave(nome, typekey);
+  await addChave(nome.toUpperCase(), typekey);
 
   inputNome.value = "";
   document.getElementById("typekey").value = "";
