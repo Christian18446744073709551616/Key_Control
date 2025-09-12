@@ -1,6 +1,6 @@
 // app.js
 import { initSupabase, getChaves, addChave, devolverChave, listenChaves } from "./database.js";
-
+import { carregarMensagens, listenMensagens } from "./chat.js";
 const tabela = document.getElementById("tabelaChaves");
 const form = document.getElementById("formChave");
 const inputNome = document.getElementById("pegou");
@@ -138,6 +138,8 @@ async function main() {
   listenChaves(render);   // idem
   render();               // idem
   agendarReset();         // idem
+    await carregarMensagens();
+  listenMensagens();
 }
 
 main();

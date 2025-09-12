@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
   <title>Controle de Chaves</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -9,6 +9,36 @@
   <h1>Controle de Chaves 🔑</h1>
   <br>
 
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()"> Clique no balão! 💬 Chat do suporte</span>
+
+<!-- Caixa de chat -->
+<div id="myNav" class="zapzap">
+  <div class="zapzap-header">
+    <span>Suporte</span>
+    <span class="closebtn" onclick="closeNav()">×</span>
+  </div>
+
+  <div class="zapzap-content">
+    <div id="chatBox"></div>
+
+    <div class="zapzap-inputs">
+      <input id="nome" placeholder="Seu nome">
+      <input id="mensagem" placeholder="Digite a mensagem">
+      <button id="enviar">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.display = "flex";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.display = "none";
+}
+</script>
 <p> Veja o historico de retiradas aqui!:</p>
 
 <li><a href="/historico.html">Histórico/diagnostico </a></li>

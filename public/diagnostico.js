@@ -1,5 +1,5 @@
 
-import { initSupabase } from "./database.js";
+import { initSupabase, devolverChave } from "./database.js";
 
 
 async function main() {
@@ -10,8 +10,49 @@ async function main() {
   console.log(data, error);
 
 
+  // ---------- Verificar pendências assim que entrar ----------
+  async function verificarPendencias() {
+    const hoje = new Date().toISOString().split("T")[0]; // YYYY-MM-DD (UTC)
 
+    const { data, error } = await supabase
+      .from("Controle_chave")
+      .select("id, pegou, chave, retirada_hora, entregue_hora")
+      .is("entregue_hora", null) // ainda não devolveu
+      .lt("retirada_hora", hoje); // retirada antes de hoje
 
+    const alerta = document.getElementById("alertaPendencias");
+
+    if (error) {
+      console.error("Erro ao verificar pendências:", error);
+      alerta.innerHTML = "Erro ao verificar pendências.";
+      return;
+    }
+
+    if (data && data.length > 0) {
+      alerta.innerHTML = "<h3>Pendências encontradas:</h3>";
+      data.forEach(r => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+          ⚠️ ${r.pegou} retirou a chave <b>${r.chave}</b> em 
+          ${new Date(r.retirada_hora).toLocaleDateString("pt-BR")} 
+          e ainda não devolveu.
+          <button data-id="${r.id}">Devolver</button>
+        `;
+        alerta.appendChild(div);
+
+        // botão de devolução
+        div.querySelector("button").onclick = async () => {
+          await devolverChave(r.id); // usa a função do database.js
+          await verificarPendencias(); // recarrega a lista de pendências
+        };
+      });
+    } else {
+      alerta.innerHTML = ""; // sem pendências
+    }
+  }
+
+  // chama logo no início
+  await verificarPendencias();
 
 // ---------- Helpers ----------
 function ymdLocal(date) {
@@ -147,6 +188,7 @@ btnDia.addEventListener("click", async () => {
     console.error("Erro filtro dia:", error);
     return;
   }
+
 
   // preencher tabela do dia
   preencherTabela(tabelaDia, data || []);

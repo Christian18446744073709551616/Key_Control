@@ -51,7 +51,7 @@ export async function addChave(nome, typekey) {
 
   if (existente) {
     console.warn(`A chave "${typekey}" ainda não foi devolvida!`);
-    alert(`A chave "${typekey}" ainda não foi devolvida!`);
+    alert(`A chave "${typekey}" ainda não foi devolvida! Verifique no historico se há chaves Não Devolvidas!`);
     return;
   }
 
